@@ -67,17 +67,17 @@ public static void CuteFunction(double[,] A)
 
 	      for (int i = 0; i < A.GetLength(0); j++){
                  for (int j = 0; j < A.GetLength(1); j++){
-			if (A[i,j] == 0) {x = j; k++; break;}
-		 }
+					if (A[i,j] == 0) {x = j; k++; break;}
+				}
 		if(k!=0) break;
-	      }
+			}
 	k = 0;
 	      for (int i = 0; i < A.GetLength(1); i++){
-		   for (int j = 0; j < A.GetLength(0); j++){
-			if (A[i,j] == 0) {y = j; k++; break;}
-		   }
+				for (int j = 0; j < A.GetLength(0); j++){
+					if (A[i,j] == 0) {y = j; k++; break;}
+				}
 		if(k!=0) break;
-	      }
+			}
 	    Console.Write("\n " + x + "   " + y + " \n");
 	}
 ////////////////////////////////////////////////////////////////
