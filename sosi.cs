@@ -65,7 +65,7 @@ public static void CuteFunction(double[,] A)
 	     //double[,] res = new double[H / sh, W / sh];
 		int x; int y; int k = 0;
 
-	      for (int i = 0; i < A.GetLength(0); j++){
+	      for (int i = 0; i < A.GetLength(0); i++){
                  for (int j = 0; j < A.GetLength(1); j++){
 					if (A[i,j] == 0) {x = j; k++; break;}
 				}
