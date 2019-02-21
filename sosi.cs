@@ -55,15 +55,14 @@ namespace ii_dinahyi_
             return bitmap;
         }
         
-        public static int[,] CuteFunction(double[,] A)
+        public static void CuteFunction(double[,] A)
         {
             int x=0;
             int y=0;
             int xx = 0;
             int yy = 0;
             int k = 0;
-
-
+            
             for (var i = 0; i < A.GetLength(1); i++)
             {
                 for (var j = 0; j < A.GetLength(0); j++)
@@ -72,11 +71,7 @@ namespace ii_dinahyi_
                 }
                 Console.WriteLine();
             }
-
-
-
-            //var hh = A.GetLength(0) > A.GetLength(1) ? A.GetLength(0) : A.GetLength(1);
-            //var 
+ 
             for(int i = 0; i < A.GetLength(1); i++)
             {
                 for (int j = 0; j < A.GetLength(0); j++)
@@ -90,6 +85,7 @@ namespace ii_dinahyi_
                 }
                 if (k != 0) break;
             }
+
             k = 0;
             for (int i = 0; i < A.GetLength(0); i++)
             {
@@ -106,8 +102,7 @@ namespace ii_dinahyi_
             }
             Console.Write("\n " + x + "   " + y + " \n");
         
-
-        k = 0;
+            k = 0;
             for (int i = A.GetLength(1)-1; i >=0; i--)
             {
                 for (int j = A.GetLength(0)-1; j >=0; j--)
@@ -137,13 +132,47 @@ namespace ii_dinahyi_
             }
             Console.WriteLine(xx + "   " + yy );
 
-            var returnArr = new int[xx - x, yy - y];
-            return returnArr;
+
+
+            // return returnArr;
+            //A[y, x] = 8;
+            //for (var i = 0; i < A.GetLength(1); i++)
+            //{
+            //    for (var j = 0; j < A.GetLength(0); j++)
+            //    {
+            //        Console.Write(A[j, i]);
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            Zapolni(y,x,yy+1,xx+1, A);
         }
 
         /////razbit na f-tsii i tebe ebalo///////////
 
-
+            public static double[,] Zapolni(int x, int y, int xx, int yy, double[,] A)
+        {
+            var w = xx - x;
+            var h = yy - y;
+            var retArr = new double[w,h];
+            for (var i=0; i<w; i++)
+            {
+                for (var j=0; j<h; j++)
+                {
+                    retArr[i, j] = A[i + x, j + y];
+                }
+            }
+            for (var i=0; i<h; i++)
+            {
+                for (var j=0; j<w; j++)
+                {
+                    Console.Write(retArr[j,i] );
+                }
+                Console.WriteLine();
+            }
+            return retArr;
+        }
+       
         public static double[,] GetArrFromBMP(Bitmap im)
         {
             double[,] arr = new double[im.Width, im.Height];
@@ -160,7 +189,7 @@ namespace ii_dinahyi_
 
         static void Main(string[] args)
         {
-            var l = ColorFromImg("ept.jpg", 2);
+            var l = ColorFromImg("bzzz.jpg", 2);
             var t = GetBitmapFromArr(l);
             t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
             var h= GetArrFromBMP(t);
