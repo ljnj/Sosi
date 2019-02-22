@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Drawing;
 
@@ -11,11 +11,9 @@ namespace ii_dinahyi_
         static double[,] ColorFromImg(string str, int sh)
         {
             Bitmap img = new Bitmap(str);
-            int W = 0; int H = 0;
-            if (img.Width % sh != 0) W = img.Width + (sh - (img.Width % sh));
-            else W = img.Width;
-            if (img.Height % sh != 0) H = img.Height + (sh - (img.Height % sh));
-            else H = img.Height;
+            int W = img.Width % sh == 0 ? img.Width : img.Width + (sh - img.Width % sh);
+            int H = img.Height % sh == 0 ? img.Height : img.Height + (sh - img.Height % sh);
+
             Console.Write("\n " + img.Width + "   " + img.Height + " \n");
             Console.Write("\n " + W + "   " + H + " \n");
             double[,] res = new double[H / sh, W / sh];
@@ -41,82 +39,166 @@ namespace ii_dinahyi_
             return res;
         }
 
-        public static Bitmap GetBitmapFromArr(double[,] array)
+        public static Bitmap GetBitmapFromArr(double[,] array, int lvl)
         {
             Bitmap bitmap = new Bitmap(array.GetLength(1), array.GetLength(0));
             for (int x = 0; x < array.GetLength(1); x++)
             {
                 for (int y = 0; y < array.GetLength(0); y++)
                 {
-                    if (array[y, x] < 140)
+                    if (array[y, x] < lvl)
                         bitmap.SetPixel(x, y, Color.Black);
                     else
                         bitmap.SetPixel(x, y, Color.White);
-                    // Convert.ToString(Convert.ToInt32(array[x, y]), 16);
-
-                    // bitmap.SetPixel(x, y, Color.FromArgb((int)array[x, y]));
                 }
             }
             return bitmap;
         }
-
-        ////////////////////////////////////////////////////////////////
-        public static void CuteFunction(double[,] A)
+        
+        public static double[,] CuteFunction(double[,] A)
         {
-            //double[,] res = new double[H / sh, W / sh];
-            int x=0;
-            int y=0;
-            int k = 0;
-            for (var i=0; i<A.GetLength(0); i++)
+            
+            for (var i = 0; i < A.GetLength(1); i++)
             {
-                for (var j=0; j<A.GetLength(1); j++)
+                for (var j = 0; j < A.GetLength(0); j++)
                 {
-                    Console.Write(A[i, j]);
+                    Console.Write(A[j, i]);
                 }
                 Console.WriteLine();
             }
+            int x = FindX(A.GetLength(1), A.GetLength(0), A, 0);
+            int y = FindY(A.GetLength(0), A.GetLength(1), A, 0);
+            int xx = FindXX(A.GetLength(1) - 1, A.GetLength(0) - 1, A, 0);
+            int yy = FindYY(A.GetLength(0) - 1, A.GetLength(1) - 1, A, 0);
 
-            for (int i = 0; i < A.GetLength(0); i++)
+            Console.Write("\n " + x + "   " + y + " \n");
+            Console.WriteLine(xx + "   " + yy );
+
+            var mini = Zapolni(y, x, yy + 1, xx + 1, A);
+            return mini;
+        }
+        
+        public static int FindX (int a, int b, double[,] A, int k)
+        {
+            int x = 0;
+            for (int i = 0; i <a; i++)
             {
-                for (int j = 0; j < A.GetLength(1); j++)
+                for (int j = 0; j < b; j++)
                 {
-                    if (A[i, j] == 0)
+                    if (A[j, i] == 0)
                     {
                         x = i;
                         k++;
                         break;
                     }
                 }
-                if (k != 0) break;
+                if (k != 0)
+                    break;
             }
-            k = 0;
-            for (int i = 0; i < A.GetLength(1); i++)
+            return x;
+        }
+
+        public static int FindY(int a, int b, double[,] A, int k)
+        {
+            int y = 0;
+            for (int i = 0; i < a; i++)
             {
-                for (int j = 0; j < A.GetLength(0); j++)
+                for (int j = 0; j < b; j++)
                 {
                     if (A[i, j] == 0)
                     {
-                        y = j;
+                        y = i;
+                        k++;
+                        break;
+                    }
+                }
+                if (k != 0)
+                    break;
+            }
+            return y;
+        }
+
+        public static int FindXX (int a, int b, double[,] A, int k)
+        {
+            var xx = 0;
+            for (int i = a; i >= 0; i--)
+            {
+                for (int j = b; j >= 0; j--)
+                {
+                    if (A[j, i] == 0)
+                    {
+                        xx = i;
+                        k++;
+                        break;
+                    }
+                }
+                if (k != 0)
+                {
+                    k = 0;
+                    break;
+                }
+            }
+            return xx;
+        }
+
+        public static int FindYY (int a, int b, double[,]A, int k)
+        {
+            int yy = 0;
+            for (int i = a; i >= 0; i--)
+            {
+                for (int j = b; j >= 0; j--)
+                {
+                    if (A[i, j] == 0)
+                    {
+                        yy = i;
                         k++;
                         break;
                     }
                 }
                 if (k != 0) break;
             }
-            Console.Write("\n " + x + "   " + y + " \n");
+            return yy;
         }
 
-        
-        /// /////////////////////////////////////////
+        public static double[,] Zapolni(int x, int y, int xx, int yy, double[,] A)
+        {
+            var w = xx - x;
+            var h = yy - y;
+            var retArr = new double[w, h];
+            for (var i = 0; i < w; i++)
+            {
+                for (var j = 0; j < h; j++)
+                {
+                    retArr[i, j] = A[i + x, j + y];
+                }
+            }
+            return retArr;
+        }
        
+        public static double[,] GetArrFromBMP(Bitmap im)
+        {
+            double[,] arr = new double[im.Width, im.Height];
+            for (var i = 0; i < arr.GetLength(0); i++)
+            {
+                for (var j = 0; j < arr.GetLength(1); j++)
+                {
+                    int color = (im.GetPixel(i, j).R + im.GetPixel(i, j).G + im.GetPixel(i, j).B) / 3;
+                    arr[i, j] = color > 0 ? 1 : 0;
+                }
+            }
+            return arr;
+        }
 
         static void Main(string[] args)
         {
-            var l = ColorFromImg("9.jpg", 1);
-            var t = GetBitmapFromArr(l);
+            var l = ColorFromImg("bzzz.jpg", 2);
+            var t = GetBitmapFromArr(l, 140);
             t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
-            CuteFunction(l);
-            Console.ReadKey();
+            var h= GetArrFromBMP(t);
+            var cut= CuteFunction(h);
+            var miniimg = GetBitmapFromArr(cut, 1);
+            miniimg.Save(@"C:\Users\xoxo\Desktop\mini.jpg");
+            Console.ReadLine();
         }
     }
 }
