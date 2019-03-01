@@ -8,13 +8,14 @@ namespace ii_dinahyi_
     {
         static void Main(string[] args)
         {
-            var l = Perfect.ColorFromImg("x.jpg", 1);
-            var t =ObjToAnother.GetBitmapFromArr(l, 200);
+            var l = Perfect.ColorFromImg("odin.jpg", 1);
+            var t =ObjToAnother.GetBitmapFromArr(l, 160);
 
             t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
 
             var h =ObjToAnother.GetArrFromBMP(t);
-            var cut = Perfect.CuteFunction(h);
+            var hh = Perfect.MedianFilter(h);
+            var cut = Perfect.CuteFunction(hh);
             var cute = Perfect.MakeAPerfect(cut);
             var miniimg =ObjToAnother.GetBitmapFromArr(cute, 1);
 
@@ -29,5 +30,5 @@ namespace ii_dinahyi_
 
 //TODO: ColorFromImg Black/White insted RGB
 //TODO: DEL EBANYU MakeAPerfect!!! It's Kostil!
-//TODO: Dynamic CutFrame ( + or - )
+//TODO: 
 //TODO: 

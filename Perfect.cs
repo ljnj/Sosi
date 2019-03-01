@@ -9,7 +9,6 @@ namespace ii_dinahyi_
 {
     class Perfect
     {
-
         public static double[,] ColorFromImg(string str, int sh)
         {
             Bitmap img = new Bitmap(str);
@@ -21,6 +20,7 @@ namespace ii_dinahyi_
             double[,] res = new double[H / sh, W / sh];
             for (int i = 0; i < W; i += sh)
             {
+
                 for (int j = 0; j < H; j += sh)
                 {
                     int s = 0;
@@ -33,6 +33,7 @@ namespace ii_dinahyi_
             }
             return res;
         }
+
         public static double[,] CuteFunction(double[,] A)
         {
             int x = Find.FindX(A.GetLength(1), A.GetLength(0), A, 0);
@@ -75,5 +76,40 @@ namespace ii_dinahyi_
             return retArr;
         }
 
+        public static double[,] MedianFilter(double[,] original)
+        {
+            var a = original.GetLength(0);
+            var b = original.GetLength(1);
+            var changed = new double[original.GetLength(0), original.GetLength(1)];
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                    changed[i, j] = LittleArrays(original, i, j);
+            }
+            return changed;
+        }
+
+        private static double LittleArrays(double[,] arr, int x, int y)
+        {
+            int a = arr.GetLength(0);
+            int b = arr.GetLength(1);
+            double med;
+            List<double> lilList = new List<double>();
+            for (int i = -1; i <= 5; i+=6)
+                for (int j = -1; j <= 5; j+=6)
+                    try
+                    {
+                        lilList.Add(arr[x + i, y + j]);
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+            lilList.Sort();
+            med = lilList[lilList.Count / 2];
+            if (lilList.Count % 2 == 0)
+                med = (lilList[lilList.Count / 2] + lilList[(lilList.Count / 2) - 1]) / 2;
+            return med;
+        }
     }
 }
