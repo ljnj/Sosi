@@ -44,8 +44,9 @@ namespace ii_dinahyi_
             Console.Write("\n " + x + "   " + y + " \n");
             Console.WriteLine(xx + "   " + yy);
 
-            var mini = Perfect.Fill(y, x, yy + 1, xx + 1, A);
-            return mini;
+            var mini = Fill(y, x, yy + 1, xx + 1, A);
+            var miniDif = MakeAPerfect(mini);
+            return miniDif;
         }
 
         public static double[,] MakeAPerfect(double[,] A)

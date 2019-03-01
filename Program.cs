@@ -16,8 +16,7 @@ namespace ii_dinahyi_
             var h =ObjToAnother.GetArrFromBMP(t);
             var hh = Perfect.MedianFilter(h);
             var cut = Perfect.CuteFunction(hh);
-            var cute = Perfect.MakeAPerfect(cut);
-            var miniimg =ObjToAnother.GetBitmapFromArr(cute, 1);
+            var miniimg =ObjToAnother.GetBitmapFromArr(cut, 1);
 
             miniimg.Save(@"C:\Users\xoxo\Desktop\mini.jpg");
 
