@@ -60,44 +60,6 @@ namespace ii_dinahyi_
             return Per;
         }
 
-        public static double[,] Frame(string str)
-        {
-            Bitmap img = new Bitmap(str);
-            var difH = img.Height % 50;
-            var difW =  img.Width % 50;
-
-            int W = difW < 20 ? img.Width - img.Width % 50 : img.Width + (50 - difW);
-            int H = difH < 20 ? img.Height - img.Height % 50 : img.Height + (50-difH);
-            int shx = W / 50;
-            int shy = H / 50;
-           // Console.Write("\n\n " + W + "   " + H + "  !  " + H / shy + "   " + W / shx + "  !  " + shy + "   " + shx + "\n");
-            double[,] res = new double[W / shx, H / shy];
-            for (int i = 0; i < W; i += shx)
-            {
-                if (i >= img.Width)
-                {
-                    i -= shx; i++;
-                    if (i == img.Width)
-                        break;
-                }
-                for (int j = 0; j < H; j += shy)
-                {
-                    if (j >= img.Height)
-                    {
-                        j -= shy; j++;
-                        if (j == img.Height)
-                            break;
-                    }
-                    int s = 0;
-                    s = (img.GetPixel(i, j).R + img.GetPixel(i, j).G + img.GetPixel(i, j).B) / 3;
-                    res[j / shy, i / shx] = s;
-                    //res[i / shx, j / shy] = s;
-                    //Console.Write(s < 10 ? "  " + s + " " : s >= 10 && s < 100 ? " " + s + " " : s + " ");
-                }
-            }
-            return res;
-        }
-
         public static double[,] Fill(int x, int y, int xx, int yy, double[,] A)
         {
             var w = xx - x;
@@ -113,6 +75,5 @@ namespace ii_dinahyi_
             return retArr;
         }
 
-        
     }
 }

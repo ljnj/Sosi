@@ -20,10 +20,9 @@ namespace ii_dinahyi_
 
             miniimg.Save(@"C:\Users\xoxo\Desktop\mini.jpg");
 
-            var ArrFrame = Perfect.Frame(@"C: \Users\xoxo\Desktop\mini.jpg");
-            var frame =ObjToAnother.GetBitmapFromArr(ArrFrame, 1);
+            Bitmap ArrFrame = new Bitmap(miniimg, new Size (50,50));
 
-            frame.Save(@"C:\Users\xoxo\Desktop\Frame.jpg");
+            ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame.jpg");
         }
     }
 }
