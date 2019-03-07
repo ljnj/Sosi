@@ -1,28 +1,14 @@
-﻿
-using System;
-using System.Drawing;
-
-namespace ii_dinahyi_
+﻿namespace ii_dinahyi_
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var l = Perfect.ColorFromImg("odin.jpg", 1);
-            var t =ObjToAnother.GetBitmapFromArr(l, 160);
+            ImgAdaptation.ImgAdapt();
 
-            t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
+            //NeuronNet n = new NeuronNet(2, 50, 50);
 
-            var h =ObjToAnother.GetArrFromBMP(t);
-            var hh = Perfect.MedianFilter(h);
-            var cut = Perfect.CuteFunction(hh);
-            var miniimg =ObjToAnother.GetBitmapFromArr(cut, 1);
-
-            miniimg.Save(@"C:\Users\xoxo\Desktop\mini.jpg");
-
-            Bitmap ArrFrame = new Bitmap(miniimg, new Size (50,50));
-
-            ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame.jpg");
+            //Console.WriteLine("")
         }
     }
 }

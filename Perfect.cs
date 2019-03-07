@@ -81,7 +81,7 @@ namespace ii_dinahyi_
         {
             var a = original.GetLength(0);
             var b = original.GetLength(1);
-            var changed = new double[original.GetLength(0), original.GetLength(1)];
+            var changed = new double[a, b];
             for (int i = 0; i < a; i++)
             {
                 for (int j = 0; j < b; j++)
@@ -92,12 +92,10 @@ namespace ii_dinahyi_
 
         private static double LittleArrays(double[,] arr, int x, int y)
         {
-            int a = arr.GetLength(0);
-            int b = arr.GetLength(1);
             double med;
             List<double> lilList = new List<double>();
-            for (int i = -1; i <= 5; i+=6)
-                for (int j = -1; j <= 5; j+=6)
+            for (int i = -1; i <= 6; i ++)
+                for (int j = -1; j <= 6; j ++)
                     try
                     {
                         lilList.Add(arr[x + i, y + j]);
@@ -114,3 +112,4 @@ namespace ii_dinahyi_
         }
     }
 }
+
