@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,39 +78,30 @@ namespace ii_dinahyi_
             return retArr;
         }
 
-        public static double[,] MedianFilter(double[,] original)
+       public static double[,] Filter (Bitmap bmp)
         {
-            var a = original.GetLength(0);
-            var b = original.GetLength(1);
-            var changed = new double[a, b];
-            for (int i = 0; i < a; i++)
+            var inp = ObjToAnother.GetArrFromBMP(bmp);
+            var a = inp.GetLength(0);
+            var b = inp.GetLength(1);
+            var res = new double[a, b];
+            for (var i=1; i<a-1; i++)
             {
-                for (int j = 0; j < b; j++)
-                    changed[i, j] = LittleArrays(original, i, j);
-            }
-            return changed;
-        }
+                for (var j=1; j<b-1; j++)
+                {
+                    double t = 0;
+                    for (var x=-1; x<=1; x++)
+                    {
+                        for (var y=-1; y<=1; y++)
+                        {
+                            t = t + inp[i + x, j + y];
+                        }
+                    }
+                    res[i,j]= t;
 
-        private static double LittleArrays(double[,] arr, int x, int y)
-        {
-            double med;
-            List<double> lilList = new List<double>();
-            for (int i = -1; i <= 6; i ++)
-                for (int j = -1; j <= 6; j ++)
-                    try
-                    {
-                        lilList.Add(arr[x + i, y + j]);
-                    }
-                    catch
-                    {
-                        continue;
-                    }
-            lilList.Sort();
-            med = lilList[lilList.Count / 2];
-            if (lilList.Count % 2 == 0)
-                med = (lilList[lilList.Count / 2] + lilList[(lilList.Count / 2) - 1]) / 2;
-            return med;
+                }
+            }
+            return res;
         }
+    
     }
 }
-

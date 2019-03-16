@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,24 @@ namespace ii_dinahyi_
     {
         public static Image ImgAdapt ()
         {
+            Stopwatch stW = new Stopwatch();
+            stW.Start();
             var l = Perfect.ColorFromImg("odin.jpg", 2);
+            stW.Stop();
+            Console.WriteLine( "time1 = " + stW.Elapsed.Milliseconds);
             var t = ObjToAnother.GetBitmapFromArr(l, 160);
 
             t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
 
-            var h = ObjToAnother.GetArrFromBMP(t);
-            var hh = Perfect.MedianFilter(h);
+            stW.Start();
+            var hh = Perfect.Filter(t);
+            stW.Stop();
+            Console.WriteLine("time2 = "+ stW.Elapsed.Milliseconds);
+
+            stW.Start();
             var cut = Perfect.CuteFunction(hh);
+            stW.Stop();
+            Console.WriteLine("time3 = " + stW.Elapsed.Milliseconds);
 
             var miniimg = ObjToAnother.GetBitmapFromArr(cut, 1);
 

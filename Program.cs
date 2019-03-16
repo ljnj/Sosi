@@ -1,10 +1,13 @@
-﻿namespace ii_dinahyi_
+﻿using System;
+
+namespace ii_dinahyi_
 {
     class Program
     {
         static void Main(string[] args)
         {
             ImgAdaptation.ImgAdapt();
+            Console.ReadLine();
 
             //NeuronNet n = new NeuronNet(2, 50, 50);
 
