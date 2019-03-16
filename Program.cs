@@ -6,7 +6,7 @@ namespace ii_dinahyi_
     {
         static void Main(string[] args)
         {
-            ImgAdaptation.ImgAdapt();
+            ImgAdaptation.Adapt();
             Console.ReadLine();
 
             //NeuronNet n = new NeuronNet(2, 50, 50);

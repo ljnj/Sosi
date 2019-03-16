@@ -77,31 +77,53 @@ namespace ii_dinahyi_
             }
             return retArr;
         }
+        
 
-       public static double[,] Filter (Bitmap bmp)
+        public static double[,] Gayss (Bitmap bmp)
         {
             var inp = ObjToAnother.GetArrFromBMP(bmp);
             var a = inp.GetLength(0);
             var b = inp.GetLength(1);
             var res = new double[a, b];
-            for (var i=1; i<a-1; i++)
+            int x, y;
+            double pointColor = 0;
+            for (var i = 0; i < a ; i++)
             {
-                for (var j=1; j<b-1; j++)
+                for (var j = 0; j < b; j++)
                 {
-                    double t = 0;
-                    for (var x=-1; x<=1; x++)
+                    int count = 0;
+                    var t = new double[9];
+                    if (i == 0 || j == 0 || i==a-1 || j==b-1 )
                     {
-                        for (var y=-1; y<=1; y++)
+
+                        for (x = 0; x <= 1; x++)
                         {
-                            t = t + inp[i + x, j + y];
+                            for (y = 0; y <= 1; y++)
+                            {
+                                t[count] = 1;
+                                count++;
+                            }
                         }
                     }
-                    res[i,j]= t;
+                    else
+                    {
+                        for (x = -1; x <= 1; x++)
+                        {
+                            for (y = -1; y <= 1; y++)
+                            {
+                                t[count] = inp[i + x, j + y];
+                                count++;
+                            }
+                        }
+                    }
+                    pointColor = t[0] + 2 * t[1] + t[2] + 2 * t[3] + 4 * t[4] + 2 * t[5] + t[6] + 2 * t[7] + t[8];
+                    
+                    res[i, j] = pointColor/8;
 
                 }
             }
             return res;
         }
-    
+
     }
 }

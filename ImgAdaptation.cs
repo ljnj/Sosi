@@ -10,11 +10,11 @@ namespace ii_dinahyi_
 {
     public class ImgAdaptation
     {
-        public static Image ImgAdapt ()
+        public static Image Adapt ()
         {
             Stopwatch stW = new Stopwatch();
             stW.Start();
-            var l = Perfect.ColorFromImg("odin.jpg", 2);
+            var l = Perfect.ColorFromImg("x.jpg", 1);
             stW.Stop();
             Console.WriteLine( "time1 = " + stW.Elapsed.Milliseconds);
             var t = ObjToAnother.GetBitmapFromArr(l, 160);
@@ -22,10 +22,11 @@ namespace ii_dinahyi_
             t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
 
             stW.Start();
-            var hh = Perfect.Filter(t);
+            var hh = Perfect.Gayss(t);
             stW.Stop();
-            Console.WriteLine("time2 = "+ stW.Elapsed.Milliseconds);
+            Console.WriteLine("time2 = " + stW.Elapsed.Milliseconds);
 
+            // var hh = ObjToAnother.GetArrFromBMP(t);
             stW.Start();
             var cut = Perfect.CuteFunction(hh);
             stW.Stop();
