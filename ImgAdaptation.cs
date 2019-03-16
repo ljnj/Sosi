@@ -15,7 +15,9 @@ namespace ii_dinahyi_
             Console.WriteLine( "time1 = " + stW.Elapsed.Milliseconds);
             var t = ObjToAnother.GetBitmapFromArr(l, 160);
 
-            t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
+            Random r = new Random();
+
+            t.Save(@"C:\Users\xoxo\Desktop\he"+r.Next(100).ToString()+".jpg");
 
             stW.Start();
             var hh = Perfect.Gayss(t);
@@ -29,11 +31,11 @@ namespace ii_dinahyi_
 
             var miniimg = ObjToAnother.GetBitmapFromArr(cut, 1);
 
-            miniimg.Save(@"C:\Users\xoxo\Desktop\mini.jpg");
+            miniimg.Save(@"C:\Users\xoxo\Desktop\mini"+r.Next(100).ToString()+".jpg");
 
             Bitmap ArrFrame = new Bitmap(miniimg, new Size(50, 50));
 
-            ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame.jpg");
+            ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame"+r.Next(100).ToString()+".jpg");
             return ArrFrame;
         }
     }
