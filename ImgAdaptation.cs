@@ -6,7 +6,7 @@ namespace ii_dinahyi_
 {
     public class ImgAdaptation
     {
-        public static Image Adapt (string path)
+        public static Image Go (string path)
         {
             Stopwatch stW = new Stopwatch();
             stW.Start();

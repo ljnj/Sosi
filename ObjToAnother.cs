@@ -4,6 +4,7 @@ namespace ii_dinahyi_
 {
     class ObjToAnother
     {
+
         public static Bitmap GetBitmapFromArr(double[,] array, int lvl)
         {
             Bitmap bitmap = new Bitmap(array.GetLength(1), array.GetLength(0));
@@ -12,8 +13,8 @@ namespace ii_dinahyi_
             {
                 for (int y = 0; y < array.GetLength(0); y++)
                 {
-                   c= array[y, x] < lvl ? Color.Black : Color.White;
-                        bitmap.SetPixel(x, y, c);
+                    c = array[y, x] < lvl ? Color.Black : Color.White;
+                    bitmap.SetPixel(x, y, c);
                 }
             }
             return bitmap;

@@ -6,7 +6,7 @@ namespace ii_dinahyi_
     {
         static void Main(string[] args)
         {
-            ImgAdaptation.Adapt("6.jpg");
+            ImgAdaptation.Go("6.jpg");
            // Console.ReadLine();
         }
     }
