@@ -7,14 +7,13 @@ namespace ii_dinahyi_
         public static Bitmap GetBitmapFromArr(double[,] array, int lvl)
         {
             Bitmap bitmap = new Bitmap(array.GetLength(1), array.GetLength(0));
+            Color c;
             for (int x = 0; x < array.GetLength(1); x++)
             {
                 for (int y = 0; y < array.GetLength(0); y++)
                 {
-                    if (array[y, x] < lvl)
-                        bitmap.SetPixel(x, y, Color.Black);
-                    else
-                        bitmap.SetPixel(x, y, Color.White);
+                   c= array[y, x] < lvl ? Color.Black : Color.White;
+                        bitmap.SetPixel(x, y, c);
                 }
             }
             return bitmap;
@@ -33,6 +32,5 @@ namespace ii_dinahyi_
             }
             return arr;
         }
-
     }
 }

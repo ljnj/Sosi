@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace ii_dinahyi_
 {
@@ -16,12 +10,9 @@ namespace ii_dinahyi_
             int W = img.Width % sh == 0 ? img.Width : img.Width + (sh - img.Width % sh);
             int H = img.Height % sh == 0 ? img.Height : img.Height + (sh - img.Height % sh);
 
-            Console.Write("\n " + img.Width + "   " + img.Height + " \n");
-            Console.Write("\n " + W + "   " + H + " \n");
             double[,] res = new double[H / sh, W / sh];
             for (int i = 0; i < W; i += sh)
             {
-
                 for (int j = 0; j < H; j += sh)
                 {
                     int s = 0;
@@ -30,7 +21,6 @@ namespace ii_dinahyi_
                     res[j / sh, i / sh] = s;
                     //Console.Write(s < 10 ? "  " + s + " " : s >= 10 && s < 100 ? " " + s + " " : s + " ");
                 }
-                //Console.Write("\n\n");
             }
             return res;
         }
@@ -42,25 +32,16 @@ namespace ii_dinahyi_
             int xx = Find.FindXX(A.GetLength(1) - 1, A.GetLength(0) - 1, A, 0);
             int yy = Find.FindYY(A.GetLength(0) - 1, A.GetLength(1) - 1, A, 0);
 
-            Console.Write("\n " + x + "   " + y + " \n");
-            Console.WriteLine(xx + "   " + yy);
-
             var mini = Fill(y, x, yy + 1, xx + 1, A);
-            var miniDif = MakeAPerfect(mini);
-            return miniDif;
-        }
-
-        public static double[,] MakeAPerfect(double[,] A)
-        {
-            double[,] Per = new double[A.GetLength(1), A.GetLength(0)];
-            for (int i = 0; i < A.GetLength(1); i++)
+            var miniDif = new double[mini.GetLength(1), mini.GetLength(0)];
+            for (var i=0; i<mini.GetLength(1); i++)
             {
-                for (int j = 0; j < A.GetLength(0); j++)
+                for (var j=0; j<mini.GetLength(0); j++)
                 {
-                    Per[i, j] = A[j, i];
+                    miniDif[i, j] = mini[j, i];
                 }
             }
-            return Per;
+            return miniDif;
         }
 
         public static double[,] Fill(int x, int y, int xx, int yy, double[,] A)
@@ -95,7 +76,6 @@ namespace ii_dinahyi_
                     var t = new double[9];
                     if (i == 0 || j == 0 || i==a-1 || j==b-1 )
                     {
-
                         for (x = 0; x <= 1; x++)
                         {
                             for (y = 0; y <= 1; y++)
@@ -117,13 +97,10 @@ namespace ii_dinahyi_
                         }
                     }
                     pointColor = t[0] + 2 * t[1] + t[2] + 2 * t[3] + 4 * t[4] + 2 * t[5] + t[6] + 2 * t[7] + t[8];
-                    
                     res[i, j] = pointColor/8;
-
                 }
             }
             return res;
         }
-
     }
 }

@@ -6,17 +6,10 @@ namespace ii_dinahyi_
     {
         static void Main(string[] args)
         {
-            ImgAdaptation.Adapt();
-            Console.ReadLine();
-
-            //NeuronNet n = new NeuronNet(2, 50, 50);
-
-            //Console.WriteLine("")
+            ImgAdaptation.Adapt("6.jpg");
+           // Console.ReadLine();
         }
     }
 }
 
 //TODO: ColorFromImg Black/White insted RGB
-//TODO: DEL EBANYU MakeAPerfect!!! It's Kostil!
-//TODO: 
-//TODO: 

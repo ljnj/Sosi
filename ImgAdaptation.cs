@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ii_dinahyi_
 {
     public class ImgAdaptation
     {
-        public static Image Adapt ()
+        public static Image Adapt (string path)
         {
             Stopwatch stW = new Stopwatch();
             stW.Start();
-            var l = Perfect.ColorFromImg("x.jpg", 1);
+            var l = Perfect.ColorFromImg(path, 1);
             stW.Stop();
             Console.WriteLine( "time1 = " + stW.Elapsed.Milliseconds);
             var t = ObjToAnother.GetBitmapFromArr(l, 160);
@@ -25,8 +21,7 @@ namespace ii_dinahyi_
             var hh = Perfect.Gayss(t);
             stW.Stop();
             Console.WriteLine("time2 = " + stW.Elapsed.Milliseconds);
-
-            // var hh = ObjToAnother.GetArrFromBMP(t);
+            
             stW.Start();
             var cut = Perfect.CuteFunction(hh);
             stW.Stop();
