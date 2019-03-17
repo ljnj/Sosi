@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 
 namespace ii_dinahyi_
 {
@@ -17,7 +18,7 @@ namespace ii_dinahyi_
 
             Random r = new Random();
 
-            t.Save(@"C:\Users\xoxo\Desktop\he"+r.Next(100).ToString()+".jpg");
+            t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
 
             stW.Start();
             var hh = Perfect.Gayss(t);
@@ -31,11 +32,15 @@ namespace ii_dinahyi_
 
             var miniimg = ObjToAnother.GetBitmapFromArr(cut, 1);
 
-            miniimg.Save(@"C:\Users\xoxo\Desktop\mini"+r.Next(100).ToString()+".jpg");
+            miniimg.Save(@"C:\Users\xoxo\Desktop\mini.jpg");
 
             Bitmap ArrFrame = new Bitmap(miniimg, new Size(50, 50));
 
-            ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame"+r.Next(100).ToString()+".jpg");
+            ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame.jpg");
+
+            FileW.Write(ArrFrame);
+            FileW.Read("mem.txt");
+
             return ArrFrame;
         }
     }
