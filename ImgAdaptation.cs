@@ -38,8 +38,8 @@ namespace ii_dinahyi_
 
             ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame.jpg");
 
-            FileW.Write(ArrFrame);
-            FileW.Read("mem.txt");
+            FileRW.Write(ArrFrame);
+            FileRW.Read("mem.txt");
 
             return ArrFrame;
         }
