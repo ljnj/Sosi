@@ -8,6 +8,10 @@ namespace ii_dinahyi_
     {
         public static void IsInMemory (Bitmap bmp, string name)
         {
+            if (!File.Exists(name))
+            {
+                File.Create(name).Close();
+            }
             string[] str = File.ReadAllLines(name);
             var arr = ObjToAnother.GetArrFromBMP(bmp);
            
