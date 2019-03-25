@@ -10,15 +10,17 @@ namespace ii_dinahyi_
         public static Image Go (string path)
         {
             Stopwatch stW = new Stopwatch();
-            stW.Start();
-            var l = Perfect.ColorFromImg(path, 1);
-            stW.Stop();
-            Console.WriteLine( "time1 = " + stW.Elapsed.Milliseconds);
-            var t = ObjToAnother.GetBitmapFromArr(l, 160);
 
-            Random r = new Random();
+            
+            stW.Start();
+            var l = Perfect.ColorFromImg(path);
+            stW.Stop();
+
+            Console.WriteLine( "time1 = " + stW.Elapsed.Milliseconds);
+
+            var t = ObjToAnother.GetBitmapFromArr(l, 160);
+            
             string pathh = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            Console.WriteLine(pathh);
             t.Save(pathh+"\\he.jpg");
 
             stW.Start();

@@ -1,12 +1,16 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace ii_dinahyi_
 {
     class Perfect
     {
-        public static double[,] ColorFromImg(string str, int sh)
+        public static double[,] ColorFromImg(string str)
         {
             Bitmap img = new Bitmap(str);
+
+            int sh = (img.Width > 2050 || img.Height > 2050) ? 10 : (img.Width > 1000 || img.Height > 1000) ? 4 : 1;
+            //Console.WriteLine(sh);
             int W = img.Width % sh == 0 ? img.Width : img.Width + (sh - img.Width % sh);
             int H = img.Height % sh == 0 ? img.Height : img.Height + (sh - img.Height % sh);
 

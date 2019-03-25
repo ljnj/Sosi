@@ -10,8 +10,8 @@ namespace ii_dinahyi_
     {
         public static void Write(Bitmap ArrFrame)
         {
-            var okgo = ObjToAnother.GetArrFromBMP(ArrFrame);
             StreamWriter strw = new StreamWriter("mem.txt", true);
+            var okgo = ObjToAnother.GetArrFromBMP(ArrFrame);
             for (var i = 0; i < okgo.GetLength(0); i++)
             {
                 for (var j = 0; j < okgo.GetLength(1); j++)
