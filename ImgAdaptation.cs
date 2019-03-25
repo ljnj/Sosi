@@ -17,8 +17,9 @@ namespace ii_dinahyi_
             var t = ObjToAnother.GetBitmapFromArr(l, 160);
 
             Random r = new Random();
-
-            t.Save(@"C:\Users\xoxo\Desktop\he.jpg");
+            string pathh = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            Console.WriteLine(pathh);
+            t.Save(pathh+"\\he.jpg");
 
             stW.Start();
             var hh = Perfect.Gayss(t);
@@ -32,13 +33,19 @@ namespace ii_dinahyi_
 
             var miniimg = ObjToAnother.GetBitmapFromArr(cut, 1);
 
-            miniimg.Save(@"C:\Users\xoxo\Desktop\mini.jpg");
+            miniimg.Save(pathh+"\\mini.jpg");
 
             Bitmap ArrFrame = new Bitmap(miniimg, new Size(50, 50));
 
-            ArrFrame.Save(@"C:\Users\xoxo\Desktop\Frame.jpg");
+            ArrFrame.Save(pathh+"\\frame.jpg");
 
-            FileRW.Write(ArrFrame);
+
+           
+            //stW.Start();
+            //stW.Stop();
+            //Console.WriteLine("time5 = " + stW.Elapsed.Milliseconds);
+
+            Stud.IsInMemory(ArrFrame, "mem.txt");
             FileRW.Read("mem.txt");
 
             return ArrFrame;
