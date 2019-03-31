@@ -1,9 +1,8 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace ii_dinahyi_
 {
-    class Perfect
+    public class Perfect
     {
         public static double[,] ColorFromImg(string str)
         {
@@ -38,9 +37,9 @@ namespace ii_dinahyi_
 
             var mini = Fill(y, x, yy + 1, xx + 1, A);
             var miniDif = new double[mini.GetLength(1), mini.GetLength(0)];
-            for (var i=0; i<mini.GetLength(1); i++)
+            for (var i = 0; i < mini.GetLength(1); i++)
             {
-                for (var j=0; j<mini.GetLength(0); j++)
+                for (var j = 0; j < mini.GetLength(0); j++)
                 {
                     miniDif[i, j] = mini[j, i];
                 }
@@ -62,9 +61,9 @@ namespace ii_dinahyi_
             }
             return retArr;
         }
-        
 
-        public static double[,] Gayss (Bitmap bmp)
+
+        public static double[,] Gayss(Bitmap bmp)
         {
             var inp = ObjToAnother.GetArrFromBMP(bmp);
             var a = inp.GetLength(0);
@@ -72,13 +71,13 @@ namespace ii_dinahyi_
             var res = new double[a, b];
             int x, y;
             double pointColor = 0;
-            for (var i = 0; i < a ; i++)
+            for (var i = 0; i < a; i++)
             {
                 for (var j = 0; j < b; j++)
                 {
                     int count = 0;
                     var t = new double[9];
-                    if (i == 0 || j == 0 || i==a-1 || j==b-1 )
+                    if (i == 0 || j == 0 || i == a - 1 || j == b - 1)
                     {
                         for (x = 0; x <= 1; x++)
                         {
@@ -101,7 +100,7 @@ namespace ii_dinahyi_
                         }
                     }
                     pointColor = t[0] + 2 * t[1] + t[2] + 2 * t[3] + 4 * t[4] + 2 * t[5] + t[6] + 2 * t[7] + t[8];
-                    res[i, j] = pointColor/8;
+                    res[i, j] = pointColor / 8;
                 }
             }
             return res;

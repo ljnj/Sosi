@@ -2,9 +2,8 @@
 
 namespace ii_dinahyi_
 {
-    class ObjToAnother
+    public class ObjToAnother
     {
-
         public static Bitmap GetBitmapFromArr(double[,] array, int lvl)
         {
             Bitmap bitmap = new Bitmap(array.GetLength(1), array.GetLength(0));

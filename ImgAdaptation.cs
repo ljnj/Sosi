@@ -1,38 +1,26 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
 
 namespace ii_dinahyi_
 {
     public class ImgAdaptation
     {
+       private static Dictionary<int, string> memory = new Dictionary<int, string>();
+
         public static Image Go (string path)
         {
-            Stopwatch stW = new Stopwatch();
-
-            
-            stW.Start();
+           
             var l = Perfect.ColorFromImg(path);
-            stW.Stop();
-
-            Console.WriteLine( "time1 = " + stW.Elapsed.Milliseconds);
-
             var t = ObjToAnother.GetBitmapFromArr(l, 160);
             
             string pathh = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             t.Save(pathh+"\\he.jpg");
-
-            stW.Start();
-            var hh = Perfect.Gayss(t);
-            stW.Stop();
-            Console.WriteLine("time2 = " + stW.Elapsed.Milliseconds);
             
-            stW.Start();
+            var hh = Perfect.Gayss(t);
+           
             var cut = Perfect.CuteFunction(hh);
-            stW.Stop();
-            Console.WriteLine("time3 = " + stW.Elapsed.Milliseconds);
-
+           
             var miniimg = ObjToAnother.GetBitmapFromArr(cut, 1);
 
             miniimg.Save(pathh+"\\mini.jpg");
@@ -42,13 +30,8 @@ namespace ii_dinahyi_
             ArrFrame.Save(pathh+"\\frame.jpg");
 
 
-           
-            //stW.Start();
-            //stW.Stop();
-            //Console.WriteLine("time5 = " + stW.Elapsed.Milliseconds);
-
-            Stud.IsInMemory(ArrFrame, "mem.txt");
-            FileRW.Read("mem.txt");
+            Stud.IsInMemory(ArrFrame, "mem.txt", "pairsMemory.txt");
+            
 
             return ArrFrame;
         }

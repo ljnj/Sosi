@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace ii_dinahyi_
 {
@@ -20,6 +18,14 @@ namespace ii_dinahyi_
                 }
                 //strw.WriteLine();
             }
+            strw.WriteLine();
+            strw.Close();
+        }
+
+        public static void Write (int k, string v, string name)
+        {
+            StreamWriter strw = new StreamWriter(name, true);
+            strw.Write(k.ToString()+" "+ v);
             strw.WriteLine();
             strw.Close();
         }
