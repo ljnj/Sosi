@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace ii_dinahyi_
 {
@@ -44,6 +45,15 @@ namespace ii_dinahyi_
                     if (((j + 1) % 50) == 0) Console.WriteLine();
                 }
             }
+        }
+
+        public static void Serialize<T>(string path, T obj)
+        {
+            File.WriteAllText(path, JsonConvert.SerializeObject(obj));
+        }
+        public static T Deserialize<T>(string path)
+        {
+            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
         }
 
     }

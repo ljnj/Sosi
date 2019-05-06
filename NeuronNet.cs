@@ -28,14 +28,14 @@ namespace ii_dinahyi_
                 }
             }
             else
-                neurons = FileSave.Deserialize<Neuron[]>(Path);
+                neurons = FileRW.Deserialize<Neuron[]>(Path);
 
             
         }
 
         ~NeuronNet()
         {
-            FileSave.Serialize(Path, neurons);
+            FileRW.Serialize(Path, neurons);
         }
 
         public int getInf (double[,] inp)
