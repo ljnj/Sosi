@@ -8,20 +8,17 @@ namespace ii_dinahyi_
     {
        private static Dictionary<int, string> memory = new Dictionary<int, string>();
 
-        public static Image Go (string path)
+        public static void Go (string path)
         {
-           
-            var l = Perfect.ColorFromImg(path);
-            var t = ObjToAnother.GetBitmapFromArr(l, 160);
+
+            NeuronNet nn = new NeuronNet(10, 50, 50);
+
+            var t = ObjToAnother.GetBitmapFromArr(Perfect.ColorFromImg(path), 160);
             
             string pathh = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             t.Save(pathh+"\\he.jpg");
-            
-            var hh = Perfect.Gayss(t);
-           
-            var cut = Perfect.CuteFunction(hh);
-           
-            var miniimg = ObjToAnother.GetBitmapFromArr(cut, 1);
+
+            var miniimg = ObjToAnother.GetBitmapFromArr(Perfect.CuteFunction(Perfect.Gayss(t)), 1);
 
             miniimg.Save(pathh+"\\mini.jpg");
 
@@ -29,11 +26,20 @@ namespace ii_dinahyi_
 
             ArrFrame.Save(pathh+"\\frame.jpg");
 
+            var work = ObjToAnother.GetArrFromBMP(ArrFrame);
+            var answer = nn.getInf(work);
+            Console.WriteLine($"it's {answer}, enter the correct answer");
+            var myAnsw = Console.ReadLine();
 
-            Stud.IsInMemory(ArrFrame, "mem.txt", "pairsMemory.txt");
+            Console.WriteLine(answer == int.Parse(myAnsw) ? "cool" : "your machine learning suck");
+            if (answer != int.Parse(myAnsw))
+                nn.Study(work, int.Parse(myAnsw), 1);
+            //Console.ReadKey();
+
+            //Stud.IsInMemory(ArrFrame, "mem.txt", "pairsMemory.txt");
             
 
-            return ArrFrame;
+            //return ArrFrame;
         }
     }
 }

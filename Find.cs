@@ -1,6 +1,6 @@
 ﻿namespace ii_dinahyi_
 {
-    class Find
+    public class Find
     {
         public static int FindX(int a, int b, double[,] A, int k)
         {
