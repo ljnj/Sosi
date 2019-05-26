@@ -1,0 +1,11 @@
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\bin\Debug\ii(dinahyi).exe.config
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\bin\Debug\ii(dinahyi).exe
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\bin\Debug\ii(dinahyi).pdb
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\obj\Debug\ii(dinahyi).csprojAssemblyReference.cache
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\obj\Debug\ii(dinahyi).csproj.CoreCompileInputs.cache
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\obj\Debug\ii(dinahyi).exe
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\obj\Debug\ii(dinahyi).pdb
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\bin\Debug\Kostili.dll
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\bin\Debug\Kostili.pdb
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\obj\Debug\ii(dinahyi).csproj.CopyComplete
+C:\Users\xoxo\Desktop\тык\mur\ii(dinahyi)\ii(dinahyi)\bin\Debug\Newtonsoft.Json.dll
