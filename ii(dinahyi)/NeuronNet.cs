@@ -55,7 +55,7 @@ namespace ii_dinahyi_
             return answInd;
         }
 
-        public void Study (double[,] inp, int right, int k)
+        public void Study (double[,] inp, int right, double k)
         {
             neurons[right].Memory(inp, k);
         }

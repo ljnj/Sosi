@@ -27,19 +27,31 @@ namespace ii_dinahyi_
             ArrFrame.Save(pathh+"\\frame.jpg");
 
             var work = ObjToAnother.GetArrFromBMP(ArrFrame);
-            var nn = new NN();
-            nn.Check(nn.Answer(work), work);
-            //var answer = nn.getInf(work);
-            //Console.WriteLine($"it's {answer}, enter the correct answer");
-            //var myAnsw = Console.ReadLine();
+            // var nn = new NN(10, 50, 50);
+            //// nn.Check(nn.Answer(work), work);
+            // var answer = nn.Answer(work);
+            // Console.WriteLine($"it's {answer}, enter the correct answer");
+            // var myAnsw = Console.ReadLine();
 
-            //Console.WriteLine(answer == int.Parse(myAnsw) ? "cool" : "your machine learning sucks");
-            //if (answer != int.Parse(myAnsw))
-            //    nn.Study(work, int.Parse(myAnsw), 1);
+            // Console.WriteLine(answer == int.Parse(myAnsw) ? "cool" : "your machine learning sucks");
+            // if (answer != int.Parse(myAnsw))
+            //     nn.Study(work, int.Parse(myAnsw), 1);
+
+            NeuronNet nn = new NeuronNet(10, 10, 10);
+            // nn.Check(nn.Answer(work), work);
+            var answer = nn.getInf(work);
+            Console.WriteLine($"it's {answer}, enter the correct answer");
+            var myAnsw = Console.ReadLine();
+
+            Console.WriteLine(answer == int.Parse(myAnsw) ? "cool" : "your machine learning suck");
+            if (answer != int.Parse(myAnsw))
+                nn.Study(work, int.Parse(myAnsw), 0.05);
+
+
             //Console.ReadKey();
 
             //Stud.IsInMemory(ArrFrame, "mem.txt", "pairsMemory.txt");
-            
+
 
             //return ArrFrame;
         }

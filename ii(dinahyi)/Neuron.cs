@@ -1,4 +1,6 @@
-﻿namespace ii_dinahyi_
+﻿using System;
+
+namespace ii_dinahyi_
 {
     public class Neuron
     {
@@ -15,10 +17,10 @@
 
                 }
             }
-            return neuronPover;
+            return 1 / (1 + Math.Pow(Math.E, -neuronPover));
         }
 
-        public void Memory(double[,] inp, int k)
+        public void Memory(double[,] inp, double k)
         {
             for (var j = 0; j < Weight.GetLength(1); j++)
             {

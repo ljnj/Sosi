@@ -6,19 +6,22 @@ namespace ii_dinahyi_
     {
         static void Main(string[] args)
         {
-            ImgAdaptation.Go("1-1.jpg");
-            Console.WriteLine("vsio");
-            ImgAdaptation.Go("you.jpg");
-            ImgAdaptation.Go("1.jpg");
-            ImgAdaptation.Go("jeka.jpg");
-            ImgAdaptation.Go("jeka1.jpg");
-            ImgAdaptation.Go("1z.jpg");
-            ImgAdaptation.Go("I.jpg");
-            ImgAdaptation.Go("0.jpg");
-            //ImgAdaptation.Go("pedro.jpg");
-            //ImgAdaptation.Go("x.jpg");
-            ImgAdaptation.Go("odin.jpg");
-            Console.Read();
+           
+                //Console.WriteLine("vsio");
+                ImgAdaptation.Go("you.jpg");
+            ImgAdaptation.Go("2.png");
+                ImgAdaptation.Go("1.jpg");
+                ImgAdaptation.Go("jeka.jpg");
+                ImgAdaptation.Go("odin.jpg");
+                ImgAdaptation.Go("jeka1.jpg");
+                ImgAdaptation.Go("1z.jpg");
+                ImgAdaptation.Go("I.jpg");
+            ImgAdaptation.Go("22.jpg");
+                ImgAdaptation.Go("0.jpg");
+                ////ImgAdaptation.Go("pedro.jpg");
+                ////ImgAdaptation.Go("x.jpg");
+                Console.Read();
+            
         }
     }
 }
